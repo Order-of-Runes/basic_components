@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:basic_components/src/chip/chip.dart';
 import 'package:basic_components/src/chip/chip_action.dart';
 import 'package:basic_components/src/chip/chip_item.dart';
-import 'package:basic_components/src/gaps.dart';
+import 'package:better_components/better_components.dart';
 import 'package:flutter/material.dart';
 import 'package:utils/utils.dart';
 

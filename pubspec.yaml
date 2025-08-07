@@ -1,12 +1,16 @@
 name: basic_components
 description: "A collection of basic components"
-version: 0.0.2
+version: 0.0.3
 publish_to: none
 
 environment:
   sdk: ">=3.8.0 <4.0.0"
 
 dependencies:
+  better_components:
+    git:
+      url: https://github.com/Order-of-Runes/better_components.git
+      ref: main
   flutter:
     sdk: flutter
   utils:
