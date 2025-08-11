@@ -24,7 +24,7 @@ class BasicButton extends StatelessWidget {
     Key? key,
     required VoidCallback onPressed,
     required String label,
-    required ButtonDimension size,
+    required Size size,
     bool capitalize = false,
     bool mini = false,
     Widget? icon,
@@ -55,7 +55,7 @@ class BasicButton extends StatelessWidget {
     Key? key,
     required VoidCallback onPressed,
     required String label,
-    required ButtonDimension size,
+    required Size size,
     bool capitalize = false,
     bool mini = false,
     Widget? icon,
@@ -86,7 +86,7 @@ class BasicButton extends StatelessWidget {
     Key? key,
     required VoidCallback onPressed,
     required String label,
-    required ButtonDimension size,
+    required Size size,
     bool capitalize = false,
     bool mini = false,
     Widget? icon,
@@ -117,7 +117,7 @@ class BasicButton extends StatelessWidget {
     Key? key,
     required VoidCallback onPressed,
     required String label,
-    required ButtonDimension size,
+    required Size size,
     bool capitalize = false,
     bool mini = false,
     Widget? icon,
@@ -152,7 +152,7 @@ class BasicButton extends StatelessWidget {
   final bool capitalize;
 
   /// Size of the button
-  final ButtonDimension size;
+  final Size size;
 
   /// Icon alignment
   final IconAlignment? iconAlignment;
@@ -183,21 +183,24 @@ class BasicButton extends StatelessWidget {
     final textWidget = Text(capitalize ? label.toUpperCase() : label, maxLines: 1, overflow: TextOverflow.ellipsis, style: textStyle);
 
     final borderShape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(borderRadius ?? size.height / 2), // Customize the radius
+      borderRadius: BorderRadius.circular(borderRadius ?? size.height / 2),
     );
-    final buttonSize = Size(size.width, size.height);
     final padding = mini ? const EdgeInsets.symmetric(horizontal: 12, vertical: 0) : null;
     switch (_type) {
       case ButtonType.elevated:
         final style = ElevatedButton.styleFrom(
           shape: borderShape,
           backgroundColor: buttonColor,
-          minimumSize: buttonSize,
+          minimumSize: size,
           padding: padding,
           elevation: 2,
         );
         if (icon.isNull) {
-          return ElevatedButton(style: style, onPressed: isEnabled ? onPressed : null, child: textWidget);
+          return ElevatedButton(
+            style: style,
+            onPressed: isEnabled ? onPressed : null,
+            child: textWidget,
+          );
         }
         return ElevatedButton.icon(
           onPressed: isEnabled ? onPressed : null,
@@ -210,12 +213,16 @@ class BasicButton extends StatelessWidget {
         final style = FilledButton.styleFrom(
           backgroundColor: buttonColor,
           shape: borderShape,
-          minimumSize: buttonSize,
+          minimumSize: size,
           padding: padding,
         );
 
         if (icon.isNull) {
-          return FilledButton(style: style, onPressed: isEnabled ? onPressed : null, child: textWidget);
+          return FilledButton(
+            style: style,
+            onPressed: isEnabled ? onPressed : null,
+            child: textWidget,
+          );
         }
         return FilledButton.icon(
           onPressed: isEnabled ? onPressed : null,
@@ -228,12 +235,16 @@ class BasicButton extends StatelessWidget {
         final style = OutlinedButton.styleFrom(
           side: buttonColor.isNull ? null : BorderSide(color: buttonColor!),
           shape: borderShape,
-          minimumSize: buttonSize,
+          minimumSize: size,
           padding: padding,
         );
 
         if (icon.isNull) {
-          return OutlinedButton(style: style, onPressed: isEnabled ? onPressed : null, child: textWidget);
+          return OutlinedButton(
+            style: style,
+            onPressed: isEnabled ? onPressed : null,
+            child: textWidget,
+          );
         }
         return OutlinedButton.icon(
           onPressed: isEnabled ? onPressed : null,
@@ -252,7 +263,7 @@ class BasicButton extends StatelessWidget {
                 : 16,
           ),
           shape: borderShape,
-          minimumSize: buttonSize,
+          minimumSize: size,
         );
 
         if (icon.isNull) {
@@ -270,9 +281,3 @@ class BasicButton extends StatelessWidget {
 }
 
 enum ButtonType { elevated, filled, text, outlined }
-
-abstract interface class ButtonDimension {
-  double get width;
-
-  double get height;
-}
