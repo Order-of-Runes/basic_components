@@ -1,0 +1,81 @@
+// Copyright (c) 2025 Order of Runes Authors. All rights reserved.
+
+import 'package:basic_components/src/form/src/helper/decor_mixin.dart';
+import 'package:flutter/material.dart';
+import 'package:morf/morf.dart';
+import 'package:utils/utils.dart';
+
+typedef DropDownItemBuilder<I> = DropdownMenuItem<I> Function(I);
+
+class BasicDropDown<I extends Object> extends StatelessWidget {
+  const BasicDropDown({
+    super.key,
+    required this.controller,
+    required this.itemBuilder,
+    this.decoration,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.enable = true,
+  });
+
+  final SelectionController<I> controller;
+  final DropDownItemBuilder<I> itemBuilder;
+  final InputDecoration? decoration;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final bool enable;
+
+  @override
+  Widget build(BuildContext context) {
+    return BasicDropDownWithTransform(
+      controller: controller,
+      itemBuilder: itemBuilder,
+      decoration: decoration,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      enable: enable,
+    );
+  }
+}
+
+class BasicDropDownWithTransform<I extends Object, O extends Object> extends StatelessWidget with DecorMixin {
+  const BasicDropDownWithTransform({
+    super.key,
+    required this.controller,
+    required this.itemBuilder,
+    this.decoration,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.enable = true,
+  });
+
+  final TransformableSelectionController<I, O> controller;
+  final DropDownItemBuilder<I> itemBuilder;
+  final InputDecoration? decoration;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final bool enable;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: controller,
+      builder: (context, _) {
+        final defaultDecoration = getDecoration(context, controller);
+        final mergedDecoration = decoration.isNull ? defaultDecoration : mergeDecoration(defaultDecoration, decoration!);
+        return DropdownButtonFormField<I>(
+          value: controller.value,
+          isExpanded: true,
+          items: controller.items.map(itemBuilder).toList(),
+          onChanged: enable ? controller.onChanged : null,
+          decoration: resolveDecoration(
+            mergedDecoration,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            errorText: controller.error,
+          ),
+        );
+      },
+    );
+  }
+}
