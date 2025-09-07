@@ -9,5 +9,6 @@ export 'src/chip/chip_action.dart';
 export 'src/chip/chip_item.dart';
 export 'src/chip/chip_set.dart';
 export 'src/dialog/dialog_base.dart';
+export 'src/form/form.dart';
 export 'src/slidable/slidable_controller.dart';
 export 'src/slidable/slidable_menu.dart';
