@@ -16,6 +16,11 @@ class BasicDropDown<I extends Object> extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.enable = true,
+    this.isExpanded = false,
+    this.isDense = true,
+    this.itemHeight,
+    this.disabledHint,
+    this.autofocus = false,
   });
 
   final SelectionController<I> controller;
@@ -24,6 +29,11 @@ class BasicDropDown<I extends Object> extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool enable;
+  final bool isExpanded;
+  final bool isDense;
+  final bool autofocus;
+  final double? itemHeight;
+  final Widget? disabledHint;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +57,11 @@ class BasicDropDownWithTransform<I extends Object, O extends Object> extends Sta
     this.prefixIcon,
     this.suffixIcon,
     this.enable = true,
+    this.isExpanded = false,
+    this.isDense = true,
+    this.itemHeight,
+    this.disabledHint,
+    this.autofocus = false,
   });
 
   final TransformableSelectionController<I, O> controller;
@@ -55,6 +70,11 @@ class BasicDropDownWithTransform<I extends Object, O extends Object> extends Sta
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool enable;
+  final bool isExpanded;
+  final bool isDense;
+  final bool autofocus;
+  final double? itemHeight;
+  final Widget? disabledHint;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +85,11 @@ class BasicDropDownWithTransform<I extends Object, O extends Object> extends Sta
         final mergedDecoration = decoration.isNull ? defaultDecoration : mergeDecoration(defaultDecoration, decoration!);
         return DropdownButtonFormField<I>(
           value: controller.value,
-          isExpanded: true,
+          isExpanded: isExpanded,
+          isDense: isDense,
+          autofocus: autofocus,
+          itemHeight: itemHeight,
+          disabledHint: disabledHint,
           items: controller.items.map(itemBuilder).toList(),
           onChanged: enable ? controller.onChanged : null,
           decoration: resolveDecoration(
