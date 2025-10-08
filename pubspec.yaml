@@ -1,6 +1,6 @@
 name: basic_components
 description: "A collection of basic components"
-version: 0.0.10
+version: 0.0.11
 publish_to: none
 
 environment:
@@ -16,7 +16,7 @@ dependencies:
   morf:
     git:
       url: https://github.com/TheMakersPrime/morf.git
-      ref: 0.0.2
+      ref: 0.0.3
   utils:
     git:
       url: https://github.com/Order-of-Runes/utils.git
