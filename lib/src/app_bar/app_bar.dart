@@ -27,6 +27,7 @@ class BasicAppBar extends StatelessWidget {
     this.titleHeight = 28,
     this.subtitleHeight = 20,
     this.actionOverflowThreshold = 2,
+    this.collapsedBuilder,
   });
 
   /*
@@ -110,6 +111,8 @@ class BasicAppBar extends StatelessWidget {
 
   final int actionOverflowThreshold;
 
+  final WidgetBuilder? collapsedBuilder;
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -166,7 +169,11 @@ class BasicAppBar extends StatelessWidget {
     if (flexibleSpace.isNull) {
       flexibleChildren = [
         if (flexibleTop.isNotNull) flexibleTop!,
-        if (maybeTitle.isNotNull) PreferredSize(preferredSize: Size.fromHeight(titleHeight), child: maybeTitle!),
+        if (maybeTitle.isNotNull)
+          PreferredSize(
+            preferredSize: Size.fromHeight(titleHeight),
+            child: maybeTitle!,
+          ),
         if (flexibleMid.isNotNull) flexibleMid!,
         if (subtitle.isNotNull)
           PreferredSize(
@@ -199,7 +206,7 @@ class BasicAppBar extends StatelessWidget {
             padding: resolvedPadding,
             gap: resolvedGap,
             actionCount: appBarActions.length,
-            collapsedBuilder: maybeTitle.isNull ? null : (_) => maybeTitle!,
+            collapsedBuilder: collapsedBuilder ?? (maybeTitle.isNull ? null : (_) => maybeTitle!),
             appBarHeight: appBarHeight,
             children: flexibleChildren,
           );
