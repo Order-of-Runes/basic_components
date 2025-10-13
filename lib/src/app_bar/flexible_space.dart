@@ -52,7 +52,11 @@ class BasicFlexibleSpace extends StatelessWidget {
                 right: padding.right,
                 top: (topSpace * t).clamp(_topExtent, topSpace),
                 duration: duration,
-                child: AnimatedOpacity(duration: duration, opacity: t == 1 ? t : (t * (t - 0.7)).clamp(0, 1), child: item),
+                child: AnimatedOpacity(
+                  duration: duration,
+                  opacity: t == 1 ? t : (t * (t - 0.7)).clamp(0, 1),
+                  child: item,
+                ),
               );
             })
             .toList(growable: false);
