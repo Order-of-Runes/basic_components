@@ -157,7 +157,11 @@ class BasicAppBar extends StatelessWidget {
                     .map((action) {
                       return PopupMenuItem(
                         value: action,
-                        child: ListTile(dense: true, leading: Icon(action.icon), title: Text(action.tooltip)),
+                        child: ListTile(
+                          dense: true,
+                          leading: Icon(action.icon),
+                          title: Text(action.tooltip),
+                        ),
                       );
                     })
                     .toList(growable: false);
@@ -213,6 +217,7 @@ class BasicAppBar extends StatelessWidget {
 
     return SliverAppBar(
       expandedHeight: collapsed ? null : height,
+      collapsedHeight: appBarHeight,
       title: collapsed
           ? maybeTitle.isNotNull
                 ? maybeTitle
