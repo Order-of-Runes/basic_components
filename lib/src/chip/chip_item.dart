@@ -50,20 +50,20 @@ class ChipItem<T> extends Equatable {
     bool? isSelected,
   }) {
     return ChipItem(
-      id: this.id,
+      id: id,
       label: label ?? this.label,
-      value: onValue.isNull ? this.value : onValue!(),
+      value: onValue.isNull ? value : onValue!(),
       isSelected: isSelected ?? this.isSelected,
-      style: this.style,
-      selectedStyle: this.selectedStyle,
-      leadingWidgetBuilder: this.leadingWidgetBuilder,
-      color: this.color,
-      selectedColor: this.selectedColor,
-      trailingIconColor: this.trailingIconColor,
-      selectedTrailingIconColor: this.selectedTrailingIconColor,
-      onAction: this.onAction,
-      borderColor: this.borderColor,
-      selectedBorderColor: this.selectedBorderColor,
+      style: style,
+      selectedStyle: selectedStyle,
+      leadingWidgetBuilder: leadingWidgetBuilder,
+      color: color,
+      selectedColor: selectedColor,
+      trailingIconColor: trailingIconColor,
+      selectedTrailingIconColor: selectedTrailingIconColor,
+      onAction: onAction,
+      borderColor: borderColor,
+      selectedBorderColor: selectedBorderColor,
     );
   }
 
