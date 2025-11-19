@@ -44,7 +44,7 @@ class BasicTextField extends StatefulWidget {
   State<BasicTextField> createState() => _BasicTextFieldState();
 }
 
-class _BasicTextFieldState extends State<BasicTextField> with DecorMixin{
+class _BasicTextFieldState extends State<BasicTextField> with DecorMixin {
   late TextEditingController _textEditingController;
   late FocusNode? node;
 
@@ -52,9 +52,7 @@ class _BasicTextFieldState extends State<BasicTextField> with DecorMixin{
   void initState() {
     super.initState();
     _textEditingController = TextEditingController();
-    if (widget.controller.value.isNotNullAndNotEmpty) {
-      _textEditingController.text = widget.controller.value!;
-    }
+    _textEditingController.text = widget.controller.value ?? '';
     if (widget.requestFocus) {
       node = FocusNode();
 
@@ -77,9 +75,7 @@ class _BasicTextFieldState extends State<BasicTextField> with DecorMixin{
     return ListenableBuilder(
       listenable: widget.controller,
       builder: (context, _) {
-        if (widget.controller.value.isNotNull) {
-          _textEditingController.text = widget.controller.value!;
-        }
+        _textEditingController.text = widget.controller.value ?? '';
         final defaultDecoration = getDecoration(context, widget.controller);
         final mergedDecoration = widget.decoration.isNull ? defaultDecoration : mergeDecoration(defaultDecoration, widget.decoration!);
 
