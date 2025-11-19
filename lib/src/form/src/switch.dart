@@ -62,7 +62,7 @@ class _BasicSwitchState extends State<BasicSwitch> {
         });
       },
       // Notify the parent widget when the switch is toggled
-      activeColor: widget.activeColor,
+      activeThumbColor: widget.activeColor,
       // Color for the switch when active (on)
       inactiveThumbColor: widget.inactiveThumbColor,
       // Color for the thumb when inactive (off)

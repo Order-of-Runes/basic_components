@@ -84,7 +84,7 @@ class BasicDropDownWithTransform<I extends Object, O extends Object> extends Sta
         final defaultDecoration = getDecoration(context, controller);
         final mergedDecoration = decoration.isNull ? defaultDecoration : mergeDecoration(defaultDecoration, decoration!);
         return DropdownButtonFormField<I>(
-          value: controller.value,
+          initialValue: controller.value,
           isExpanded: isExpanded,
           isDense: isDense,
           autofocus: autofocus,
