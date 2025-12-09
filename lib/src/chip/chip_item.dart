@@ -1,4 +1,4 @@
-// Copyright (c) 2025 EShare Authors. All rights reserved.
+// Copyright (c) 2025 Order of Runes Authors. All rights reserved.
 // ignore_for_file: avoid_positional_boolean_parameters
 
 import 'package:basic_components/src/chip/chip_action.dart';
