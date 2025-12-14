@@ -23,6 +23,8 @@ class BasicTextField extends StatefulWidget {
     this.requestFocus = false,
     this.enabled,
     this.textInputAction,
+    this.height,
+    this.contentPadding,
   });
 
   final InputController controller;
@@ -39,6 +41,9 @@ class BasicTextField extends StatefulWidget {
   final bool requestFocus;
   final bool? enabled;
   final TextInputAction? textInputAction;
+
+  final double? height;
+  final EdgeInsets? contentPadding;
 
   @override
   State<BasicTextField> createState() => _BasicTextFieldState();
@@ -76,8 +81,20 @@ class _BasicTextFieldState extends State<BasicTextField> with DecorMixin {
       listenable: widget.controller,
       builder: (context, _) {
         _textEditingController.text = widget.controller.value ?? '';
-        final defaultDecoration = getDecoration(context, widget.controller);
-        final mergedDecoration = widget.decoration.isNull ? defaultDecoration : mergeDecoration(defaultDecoration, widget.decoration!);
+        final defaultDecoration = getDecoration(
+          context,
+          widget.controller,
+          widget.height,
+          widget.contentPadding,
+          hasPrefixIcon: widget.prefixIcon.isNotNull,
+          hasSuffixIcon: widget.suffixIcon.isNotNull,
+        );
+        final mergedDecoration = widget.decoration.isNull
+            ? defaultDecoration
+            : mergeDecoration(
+                defaultDecoration,
+                widget.decoration!,
+              );
 
         return TextField(
           focusNode: node,

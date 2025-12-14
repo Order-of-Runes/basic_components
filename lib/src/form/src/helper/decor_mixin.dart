@@ -5,15 +5,33 @@ import 'package:morf/morf.dart';
 import 'package:utils/utils.dart';
 
 mixin DecorMixin {
-  InputDecoration getDecoration(BuildContext context, BaseController controller) {
+  InputDecoration getDecoration(
+    BuildContext context,
+    BaseController controller,
+    double? height,
+    EdgeInsets? contentPadding, {
+    required bool hasPrefixIcon,
+    required bool hasSuffixIcon,
+  }) {
+    final resolvedHeight = height ?? 56;
+    final resolvedContentPadding =
+        contentPadding ??
+        EdgeInsets.fromLTRB(
+          hasPrefixIcon ? 12 : 16,
+          8,
+          hasSuffixIcon ? 12 : 16,
+          8,
+        );
     return InputDecoration(
       labelText: controller.label,
       hintText: controller.hint,
       helperText: controller.helper,
-      contentPadding: const EdgeInsets.symmetric(
-        vertical: 4,
-        horizontal: 16,
+      isDense: true,
+      constraints: BoxConstraints(
+        minHeight: resolvedHeight,
+        maxHeight: resolvedHeight,
       ),
+      contentPadding: resolvedContentPadding,
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
