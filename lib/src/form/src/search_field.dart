@@ -58,7 +58,8 @@ class _BasicSearchFieldState extends State<BasicSearchField> with DecorMixin {
           InputDecoration(
             filled: true,
             fillColor: Theme.of(context).colorScheme.surfaceContainer,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+            isDense: true,
+            contentPadding: widget.contentPadding ?? const EdgeInsets.symmetric(horizontal: 24),
             floatingLabelBehavior: FloatingLabelBehavior.never,
             prefixIconColor: Theme.of(context).colorScheme.onSurfaceVariant,
             border: OutlineInputBorder(
