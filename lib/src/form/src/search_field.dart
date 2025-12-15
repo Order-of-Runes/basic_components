@@ -15,6 +15,8 @@ class BasicSearchField extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon = const Icon(Icons.search),
     this.autofillHints = const [],
+    this.height,
+    this.contentPadding,
   });
 
   final InputController controller;
@@ -23,6 +25,9 @@ class BasicSearchField extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget suffixIcon;
   final List<String> autofillHints;
+
+  final double? height;
+  final EdgeInsets? contentPadding;
 
   @override
   State<BasicSearchField> createState() => _BasicSearchFieldState();
@@ -45,7 +50,14 @@ class _BasicSearchFieldState extends State<BasicSearchField> with DecorMixin {
     return ListenableBuilder(
       listenable: widget.controller,
       builder: (context, _) {
-        final defaultDecoration = getDecoration(context, widget.controller);
+        final defaultDecoration = getDecoration(
+          context,
+          widget.controller,
+          widget.height,
+          widget.contentPadding,
+          hasPrefixIcon: widget.prefixIcon.isNotNull,
+          hasSuffixIcon: widget.suffixIcon.isNotNull,
+        );
         final mergedDecoration = mergeDecoration(
           defaultDecoration,
           InputDecoration(
