@@ -48,6 +48,11 @@ class BasicDropDown<I extends Object> extends StatelessWidget {
       suffixIcon: suffixIcon,
       enable: enable,
       contentPadding: contentPadding,
+      itemHeight: itemHeight,
+      isExpanded: isExpanded,
+      disabledHint: disabledHint,
+      autofocus: autofocus,
+      isDense: isExpanded,
     );
   }
 }
