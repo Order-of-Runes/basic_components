@@ -1,6 +1,6 @@
 name: basic_components
 description: "A collection of basic components"
-version: 0.0.16
+version: 0.0.17
 publish_to: none
 
 environment:
