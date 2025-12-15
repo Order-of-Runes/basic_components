@@ -21,7 +21,6 @@ class BasicDropDown<I extends Object> extends StatelessWidget {
     this.itemHeight,
     this.disabledHint,
     this.autofocus = false,
-    this.height,
     this.contentPadding,
   });
 
@@ -37,7 +36,6 @@ class BasicDropDown<I extends Object> extends StatelessWidget {
   final double? itemHeight;
   final Widget? disabledHint;
 
-  final double? height;
   final EdgeInsets? contentPadding;
 
   @override
@@ -49,7 +47,6 @@ class BasicDropDown<I extends Object> extends StatelessWidget {
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
       enable: enable,
-      height: height,
       contentPadding: contentPadding,
     );
   }
@@ -69,7 +66,6 @@ class BasicDropDownWithTransform<I extends Object, O extends Object> extends Sta
     this.itemHeight,
     this.disabledHint,
     this.autofocus = false,
-    this.height,
     this.contentPadding,
   });
 
@@ -85,7 +81,6 @@ class BasicDropDownWithTransform<I extends Object, O extends Object> extends Sta
   final double? itemHeight;
   final Widget? disabledHint;
 
-  final double? height;
   final EdgeInsets? contentPadding;
 
   @override
@@ -96,12 +91,10 @@ class BasicDropDownWithTransform<I extends Object, O extends Object> extends Sta
         final defaultDecoration = getDecoration(
           context,
           controller,
-          height,
           contentPadding,
-          hasPrefixIcon: prefixIcon.isNotNull,
-          hasSuffixIcon: suffixIcon.isNotNull,
         );
         final mergedDecoration = decoration.isNull ? defaultDecoration : mergeDecoration(defaultDecoration, decoration!);
+
         return DropdownButtonFormField<I>(
           initialValue: controller.value,
           isExpanded: isExpanded,

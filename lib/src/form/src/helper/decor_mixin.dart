@@ -8,29 +8,19 @@ mixin DecorMixin {
   InputDecoration getDecoration(
     BuildContext context,
     BaseController controller,
-    double? height,
-    EdgeInsets? contentPadding, {
-    required bool hasPrefixIcon,
-    required bool hasSuffixIcon,
-  }) {
-    final resolvedHeight = height ?? 56;
+    EdgeInsets? contentPadding,
+  ) {
     final resolvedContentPadding =
         contentPadding ??
-        EdgeInsets.fromLTRB(
-          hasPrefixIcon ? 12 : 16,
-          8,
-          hasSuffixIcon ? 12 : 16,
-          8,
+        const EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: 12,
         );
     return InputDecoration(
       labelText: controller.label,
       hintText: controller.hint,
       helperText: controller.helper,
       isDense: true,
-      constraints: BoxConstraints(
-        minHeight: resolvedHeight,
-        maxHeight: resolvedHeight,
-      ),
       contentPadding: resolvedContentPadding,
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),

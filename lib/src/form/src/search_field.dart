@@ -15,7 +15,6 @@ class BasicSearchField extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon = const Icon(Icons.search),
     this.autofillHints = const [],
-    this.height,
     this.contentPadding,
   });
 
@@ -26,7 +25,6 @@ class BasicSearchField extends StatefulWidget {
   final Widget suffixIcon;
   final List<String> autofillHints;
 
-  final double? height;
   final EdgeInsets? contentPadding;
 
   @override
@@ -53,10 +51,7 @@ class _BasicSearchFieldState extends State<BasicSearchField> with DecorMixin {
         final defaultDecoration = getDecoration(
           context,
           widget.controller,
-          widget.height,
           widget.contentPadding,
-          hasPrefixIcon: widget.prefixIcon.isNotNull,
-          hasSuffixIcon: widget.suffixIcon.isNotNull,
         );
         final mergedDecoration = mergeDecoration(
           defaultDecoration,

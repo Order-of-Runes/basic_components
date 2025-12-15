@@ -1,6 +1,7 @@
 // Copyright (c) 2025 Order of Runes Authors. All rights reserved.
 
 import 'package:components_example/examples/app_bar.dart';
+import 'package:components_example/examples/form.dart';
 import 'package:flutter/material.dart';
 
 class Components extends StatelessWidget {
@@ -32,7 +33,7 @@ class Components extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const BasicAppBarExample()),
+                MaterialPageRoute(builder: (_) => const FormExample()),
               );
             },
           ),
